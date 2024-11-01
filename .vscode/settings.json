@@ -1,0 +1,8 @@
+{
+  "files.associations": {
+      "stm32h5.h": "c",
+      "arm_internal.h": "c"
+  },
+  "search.useIgnoreFiles": true,
+  "editor.tabSize": 2
+}
