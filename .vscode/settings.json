@@ -1,4 +1,10 @@
 {
+  "[makefile]": {
+    "editor.insertSpaces": false,
+    "editor.tabSize": 4,
+    "editor.detectIndentation": true
+  },
+  "files.associations": {"Makefile":"makefile"},
   "search.useIgnoreFiles": true,
   "editor.tabSize": 2,
   "search.exclude": {
