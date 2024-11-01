@@ -277,7 +277,7 @@
 
     // Hide nuttx components that I don't CURRENTLY care about.
     // Just while working on H5 port
-    "nuttx/.github" : true,
+    // "nuttx/.github" : true,
     "nuttx/audio" : true,
     "nuttx/binfmt" : true,
     "nuttx/crypto" : true,
