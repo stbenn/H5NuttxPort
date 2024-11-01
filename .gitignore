@@ -66,4 +66,5 @@ _deps
 
 
 .venv
+.env
 ci_logs/
