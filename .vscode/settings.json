@@ -1,10 +1,16 @@
 {
+  "editor.rulers": [78],
   "[makefile]": {
     "editor.insertSpaces": false,
     "editor.tabSize": 4,
     "editor.detectIndentation": true
   },
-  "files.associations": {"Makefile":"makefile"},
+  "files.associations": {
+    "Makefile": "makefile",
+    "nucleo-h563zi.h": "c",
+    "stm32_gpio.h": "c",
+    "stm32_flash.h": "c"
+  },
   "search.useIgnoreFiles": true,
   "editor.tabSize": 2,
   "search.exclude": {
