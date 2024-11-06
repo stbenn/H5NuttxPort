@@ -329,5 +329,6 @@
     "nuttx/video" : true,
     "nuttx/openamp" : true,
   },
-  "workbench.colorTheme": "Default Dark Modern"
+  "workbench.colorTheme": "Default Dark Modern",
+  "editor.detectIndentation": false
 }
