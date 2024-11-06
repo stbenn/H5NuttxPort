@@ -33,3 +33,14 @@ peripheral is enabled in the peripheral selection (Peripheral Support on H5)
 
 Adding STM32_STM32H5X3XX to the config because ethernet is ONLY supported on 
 STM32H563/573 devices. 
+
+
+### Implement system config file
+The ethernet driver relies on `hardware/stm32_syscfg.h`. So need to implement
+that before moving on to the driver itself. 
+
+This peripheral DOES NOT EXIST on the H5. But the functionality used in the 
+ethernet driver DOES. 
+
+The h7 driver uses the syscfg to select mii or rmii. On the H5 this is
+implemented in the SBS peripheral. 
