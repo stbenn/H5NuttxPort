@@ -328,5 +328,6 @@
     "nuttx/graphics" : true,
     "nuttx/video" : true,
     "nuttx/openamp" : true,
-  }
+  },
+  "workbench.colorTheme": "Default Dark Modern"
 }
