@@ -27,7 +27,7 @@ prepared, and making sure the headers are correct.
 Q: At what point should the KConfig be worked on? 
 A: I think the first thing should actually be to add the KConfig options.
 
-### Adding ethernet to Kconfig
+### Adding ethernet to Kconfig (*MERGED*)
 On the H7, the "Ethernet MAC configuration" menu is hidden unless the
 peripheral is enabled in the peripheral selection (Peripheral Support on H5)
 
