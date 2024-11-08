@@ -102,12 +102,12 @@
     "nuttx/boards/z16/**" : true,
     "nuttx/boards/z80/**" : true,
 
+    "nuttx/Documentation/**" : true,
+
     // Put the STM32 ones down here for easy access if I want.
     "nuttx/arch/arm/src/stm32/**": true,
     "nuttx/arch/arm/src/stm32f0l0g0/**": true,
     "nuttx/arch/arm/src/stm32f7/**": true,
-    "nuttx/arch/arm/src/stm32h7/**" : true,
-    "nuttx/arch/arm/include/stm32h7/**" : true,
   },
   "C_Cpp.files.exclude": {
     // Src dirs
@@ -200,16 +200,11 @@
     "nuttx/arch/arm/src/stm32/**" : true,
     "nuttx/arch/arm/src/stm32f0l0g0/**": true,
     "nuttx/arch/arm/src/stm32f7/**": true,
-    "nuttx/arch/arm/src/stm32h7/**" : true,
-    "nuttx/arch/arm/include/stm32h7/**" : true,
+
     // VS Code specific ones
     "**/.vscode": true,
     "**/.vs": true,
   },
-  "explorer.autoRevealExclude": {
-    "nuttx/arch/arm/src/a1x/**": true
-  },
-
   // This is used to clean up the explorer. Some folders IDGAF about
   "files.exclude": {
     "nuttx/arch/avr": true,
