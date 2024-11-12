@@ -19,6 +19,7 @@
               // "target/stm32h5x.cfg"
               "board/st_nucleo_h5.cfg"
           ],
+          "svdFile": "${workspaceFolder}/STM32H563.svd",
           // "searchDir": ["~/stm32_openocd/tcl"],
           "showDevDebugOutput": "raw",
           "runToEntryPoint": "__start",
