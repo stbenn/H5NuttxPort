@@ -1,0 +1,76 @@
+[2024-11-12T16:20:00.434Z] SERVER CONSOLE DEBUG: onBackendConnect: gdb-server session connected. You can switch to "DEBUG CONSOLE" to see GDB interactions.
+openocd -c "gdb_port 50000" -c "tcl_port 50001" -c "telnet_port 50002" -s /home/tbennett/H5NuttxPort -f /home/tbennett/.vscode-server/extensions/marus25.cortex-debug-1.12.1/support/openocd-helpers.tcl -f board/st_nucleo_h5.cfg -c "CDRTOSConfigure nuttx" -c "adapter speed 200"
+Open On-Chip Debugger 0.12.0-00024-g34afaa939 (2024-10-24-12:29) [https://github.com/STMicroelectronics/OpenOCD]
+Licensed under GNU GPL v2
+For bug reports, read
+        http://openocd.org/doc/doxygen/bugs.html
+CDLiveWatchSetup
+Info : DEPRECATED target event trace-config; use TPIU events {pre,post}-{enable,disable}
+srst_only separate srst_nogate srst_open_drain connect_deassert_srst
+
+Info : target type name = cortex_m
+adapter speed: 200 kHz
+
+Info : Listening on port 50001 for tcl connections
+Info : Listening on port 50002 for telnet connections
+Info : STLINK V3J13M4 (API v3) VID:PID 0483:374E
+Info : Target voltage: 3.281861
+/home/tbennett/.vscode-server/extensions/marus25.cortex-debug-1.12.1/support/openocd-helpers.tcl: stm32h5x.cpu configure -rtos nuttx
+Info : clock speed 200 kHz
+Info : stlink_dap_op_connect(connect)
+Info : SWD DPIDR 0x6ba02477
+Info : [stm32h5x.cpu] Cortex-M33 r0p4 processor detected
+Info : [stm32h5x.cpu] target has 8 breakpoints, 4 watchpoints
+stm32h5x.cpu in Non-Secure state
+stm32h5x TrustZone disabled
+stm32h5x.cpu work-area address is set to 0x20000000
+stm32h5x.cpu work-area is enabled
+Info : gdb port disabled
+Info : starting gdb server for stm32h5x.cpu on 50000
+Info : Listening on port 50000 for gdb connections
+Info : accepting 'gdb' connection on tcp/50000
+Error: No symbols for NuttX
+Info : device idcode = 0x10076484 (STM32H56/H57xx - Rev X : 0x1007)
+Info : TZEN = 0xC3 : TrustZone disabled by option bytes
+Info : Product State = 0xED : 'Open'
+Info : flash size = 2048kbytes
+Info : flash mode : dual-bank
+Info : device idcode = 0x10076484 (STM32H56/H57xx - Rev X : 0x1007)
+Info : TZEN = 0xC3 : TrustZone disabled by option bytes
+Info : Product State = 0xED : 'Open'
+Info : flash size = 2048kbytes
+Info : flash mode : dual-bank
+Info : New GDB Connection: 1, Target stm32h5x.cpu, state: halted
+undefined debug reason 8 - target needs reset
+Error: Failed to read memory at 0x20000eb4
+Error: target_read_u32 : ret = -306
+
+Info : Unable to match requested speed 480 kHz, using 200 kHz
+Info : Unable to match requested speed 480 kHz, using 200 kHz
+[stm32h5x.cpu] halted due to debug-request, current mode: Thread 
+xPSR: 0xf9000000 pc: 0x0800275c msp: 0x20002df4
+Info : Unable to match requested speed 480 kHz, using 200 kHz
+Info : Unable to match requested speed 480 kHz, using 200 kHz
+[stm32h5x.cpu] halted due to debug-request, current mode: Thread 
+xPSR: 0xf9000000 pc: 0x0800275c msp: 0x20002df4
+Info : Padding image section 0 at 0x0802f173 with 1 bytes
+Info : Unable to match requested speed 480 kHz, using 200 kHz
+Info : Unable to match requested speed 480 kHz, using 200 kHz
+[stm32h5x.cpu] halted due to debug-request, current mode: Thread 
+xPSR: 0xf9000000 pc: 0x0800275c msp: 0x20002df4
+Info : Unable to match requested speed 480 kHz, using 200 kHz
+Info : Unable to match requested speed 480 kHz, using 200 kHz
+[stm32h5x.cpu] halted due to debug-request, current mode: Thread 
+xPSR: 0xf9000000 pc: 0x0800275c msp: 0x20002df4
+Error: Failed to read memory at 0x20000eb4
+Error: target_read_u32 : ret = -306
+
+Error: Failed to read memory at 0x00000000
+Error: Failed to read memory at 0x00000000
+Error: Failed to read memory at 0x00000000
+Error: Failed to read memory at 0x00000000
+Error: Failed to read memory at 0x00000000
+Error: Failed to read memory at 0x00000000
+Error: Failed to read memory at 0x00000000
+Error: Failed to read memory at 0x00000000
+Error: Failed to read memory at 0x00000000

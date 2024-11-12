@@ -1,0 +1,318 @@
+Cortex-Debug: VSCode debugger extension version 1.12.1 git(652d042). Usage info: https://github.com/Marus/cortex-debug#usage
+"configuration": {
+    "name": "Nucleo-H5 with OpenOCD",
+    "cwd": "/home/tbennett/H5NuttxPort",
+    "executable": "/home/tbennett/H5NuttxPort/nuttx/nuttx",
+    "request": "launch",
+    "type": "cortex-debug",
+    "servertype": "openocd",
+    "gdbPath": "gdb-multiarch",
+    "device": "Nucleo-H563ZI",
+    "rtos": "nuttx",
+    "configFiles": [
+        "board/st_nucleo_h5.cfg"
+    ],
+    "showDevDebugOutput": "raw",
+    "runToEntryPoint": "__start",
+    "openOCDLaunchCommands": [
+        "adapter speed 200"
+    ],
+    "preLaunchTask": "Build NuttX",
+    "postResetCommands": [
+        "eval \"monitor nuttx.pid_offset %d\", &((struct tcb_s *)(0))->pid",
+        "eval \"monitor nuttx.xcpreg_offset %d\", &((struct tcb_s *)(0))->xcp.regs",
+        "eval \"monitor nuttx.state_offset %d\", &((struct tcb_s *)(0))->task_state",
+        "eval \"monitor nuttx.name_offset %d\", &((struct tcb_s *)(0))->name",
+        "eval \"monitor nuttx.name_size %d\", sizeof(((struct tcb_s *)(0))->name)"
+    ],
+    "__configurationTarget": 6,
+    "gdbServerConsolePort": 55878,
+    "pvtAvoidPorts": [],
+    "chainedConfigurations": {
+        "enabled": false
+    },
+    "debuggerArgs": [],
+    "swoConfig": {
+        "enabled": false,
+        "decoders": [],
+        "cpuFrequency": 0,
+        "swoFrequency": 0,
+        "source": "probe"
+    },
+    "rttConfig": {
+        "enabled": false,
+        "decoders": []
+    },
+    "graphConfig": [],
+    "preLaunchCommands": [],
+    "postLaunchCommands": [],
+    "preAttachCommands": [],
+    "postAttachCommands": [],
+    "preRestartCommands": [],
+    "postRestartCommands": [],
+    "preResetCommands": [],
+    "searchDir": [],
+    "toolchainPrefix": "arm-none-eabi",
+    "extensionPath": "/home/tbennett/.vscode-server/extensions/marus25.cortex-debug-1.12.1",
+    "registerUseNaturalFormat": true,
+    "variableUseNaturalFormat": true,
+    "pvtVersion": "1.12.1",
+    "__sessionId": "af99836f-0a5a-4847-8bb8-8283b10d260a",
+    "pvtShowDevDebugOutput": "raw"
+}
+Reading symbols from objdump-multiarch --syms -C -h -w /home/tbennett/H5NuttxPort/nuttx/nuttx
+Reading symbols from nm-multiarch --defined-only -S -l -C -p /home/tbennett/H5NuttxPort/nuttx/nuttx
+Launching GDB: gdb-multiarch -q --interpreter=mi2
+1-gdb-version
+Launching gdb-server: openocd -c "gdb_port 50000" -c "tcl_port 50001" -c "telnet_port 50002" -s /home/tbennett/H5NuttxPort -f /home/tbennett/.vscode-server/extensions/marus25.cortex-debug-1.12.1/support/openocd-helpers.tcl -f board/st_nucleo_h5.cfg -c "CDRTOSConfigure nuttx" -c "adapter speed 200"
+    Please check TERMINAL tab (gdb-server) for output from openocd
+Finished reading symbols from objdump: Time: 25 ms
+Finished reading symbols from nm: Time: 38 ms
+-> =thread-group-added,id="i1"
+-> ~"GNU gdb (Ubuntu 15.0.50.20240403-0ubuntu1) 15.0.50.20240403-git\n"
+-> ~"Copyright (C) 2024 Free Software Foundation, Inc.\n"
+-> ~"License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\nThis is free software: you are free to change and redistribute it.\nThere is NO WARRANTY, to the extent permitted by law."
+-> ~"\nType \"show copying\" and \"show warranty\" for details.\n"
+-> ~"This GDB was configured as \"x86_64-linux-gnu\".\n"
+-> ~"Type \"show configuration\" for configuration details.\n"
+-> ~"For bug reporting instructions, please see:\n"
+-> ~"<https://www.gnu.org/software/gdb/bugs/>.\n"
+-> ~"Find the GDB manual and other documentation resources online at:\n    <"
+-> ~"http://www.gnu.org/software/gdb/documentation/>.\n\n"
+-> ~"For help, type \"help\".\n"
+-> ~"Type \"apropos word\" to search for commands related to \"word\".\n"
+-> 1^done
+2-gdb-set mi-async on
+-> 2^done
+3-interpreter-exec console "set print demangle on"
+-> 3^done
+4-interpreter-exec console "set print asm-demangle on"
+-> =cmd-param-changed,param="print asm-demangle",value="on"
+-> 4^done
+5-enable-pretty-printing
+-> 5^done
+6-interpreter-exec console "source /home/tbennett/.vscode-server/extensions/marus25.cortex-debug-1.12.1/support/gdbsupport.init"
+-> 6^done
+7-interpreter-exec console "source /home/tbennett/.vscode-server/extensions/marus25.cortex-debug-1.12.1/support/gdb-swo.init"
+-> =cmd-param-changed,param="language",value="c"
+-> =cmd-param-changed,param="language",value="auto"
+-> 7^done
+8-interpreter-exec console "set output-radix 0xa"
+-> ~"Output radix now set to decimal 10, hex a, octal 12.\n"
+Output radix now set to decimal 10, hex a, octal 12.
+-> 8^done
+9-interpreter-exec console "set input-radix 0xa"
+-> ~"Input radix now set to decimal 10, hex a, octal 12.\n"
+Input radix now set to decimal 10, hex a, octal 12.
+-> 9^done
+10-file-exec-and-symbols "/home/tbennett/H5NuttxPort/nuttx/nuttx"
+-> 10^done
+11-target-select extended-remote localhost:50000
+-> =thread-group-started,id="i1",pid="42000"
+-> =thread-created,id="1",group-id="i1"
+-> ~"__start () at chip/stm32_start.c:151\n"
+__start () at chip/stm32_start.c:151
+-> ~"151\t  __asm__ volatile\n"
+151	  __asm__ volatile
+-> *stopped,frame={addr="0x08000250",func="__start",args=[],file="chip/stm32_start.c",fullname="/home/tbennett/H5NuttxPort/nuttx/arch/arm/src/stm32h5/stm32_start.c",line="151",arch="armv8-m.main"},thread-id="1",stopped-threads="all"
+mi2.status = stopped
+Program stopped, probably due to a reset and/or halt issued by debugger
+-> 11^connected
+12-interpreter-exec console "monitor reset halt"
+-> @"Unable to match requested speed 480 kHz, using 200 kHz\n"
+Unable to match requested speed 480 kHz, using 200 kHz
+-> @"Unable to match requested speed 480 kHz, using 200 kHz\n"
+Unable to match requested speed 480 kHz, using 200 kHz
+-> @"[stm32h5x.cpu] halted due to debug-request, current mode: Thread \n"
+[stm32h5x.cpu] halted due to debug-request, current mode: Thread
+-> @"xPSR: 0xf9000000 pc: 0x0800275c msp: 0x20002df4\n"
+xPSR: 0xf9000000 pc: 0x0800275c msp: 0x20002df4
+-> 12^done
+13-target-download
+-> 13+download,{section=".text",section-size="192883",total-size="1860735"}
+-> 13+download,{section=".text",section-sent="15920",section-size="192883",total-sent="15920",total-size="1860735"}
+-> 13+download,{section=".ARM.exidx",section-size="8",total-size="1860735"}
+-> 13+download,{section=".data",section-size="900",total-size="1860735"}
+-> 13^done,address="0x0800024c",load-size="193791",transfer-rate="225304",write-rate="12919"
+14-interpreter-exec console "monitor reset halt"
+-> @"Unable to match requested speed 480 kHz, using 200 kHz\n"
+Unable to match requested speed 480 kHz, using 200 kHz
+-> @"Unable to match requested speed 480 kHz, using 200 kHz\n"
+Unable to match requested speed 480 kHz, using 200 kHz
+-> @"[stm32h5x.cpu] halted due to debug-request, current mode: Thread \n"
+[stm32h5x.cpu] halted due to debug-request, current mode: Thread
+-> @"xPSR: 0xf9000000 pc: 0x0800275c msp: 0x20002df4\n"
+xPSR: 0xf9000000 pc: 0x0800275c msp: 0x20002df4
+-> 14^done
+Returning dummy thread-id to workaround VSCode issue with pause button not working
+Returning dummy stack frame to workaround VSCode issue with pause button not working: {"threadId":1,"startFrame":0,"levels":20}
+15-stack-list-frames --thread 1 0 19
+-> 15^done,stack=[frame={level="0",addr="0x0800024c",func="__start",file="chip/stm32_start.c",fullname="/home/tbennett/H5NuttxPort/nuttx/arch/arm/src/stm32h5/stm32_start.c",line="144",arch="armv8-m.main"}]
+16-break-insert -t --function __start
+-> ~"Note: automatically using hardware breakpoints for read-only addresses.\n"
+Note: automatically using hardware breakpoints for read-only addresses.
+-> 16^done,bkpt={number="1",type="breakpoint",disp="del",enabled="y",addr="0x08000250",func="__start",file="chip/stm32_start.c",fullname="/home/tbennett/H5NuttxPort/nuttx/arch/arm/src/stm32h5/stm32_start.c",line="151",thread-groups=["i1"],times="0",original-location="-function __start"}
+17-exec-continue --all
+-> 17^running
+-> *running,thread-id="all"
+mi2.status = running
+-> =breakpoint-modified,bkpt={number="1",type="breakpoint",disp="del",enabled="y",addr="0x08000250",func="__start",file="chip/stm32_start.c",fullname="/home/tbennett/H5NuttxPort/nuttx/arch/arm/src/stm32h5/stm32_start.c",line="151",thread-groups=["i1"],times="1",original-location="-function __start"}
+-> ~"\n"
+
+-> ~"Temporary breakpoint 1, __start () at chip/stm32_start.c:151\n"
+Temporary breakpoint 1, __start () at chip/stm32_start.c:151
+-> ~"151\t  __asm__ volatile\n"
+151	  __asm__ volatile
+-> *stopped,reason="breakpoint-hit",disp="del",bkptno="1",frame={addr="0x08000250",func="__start",args=[],file="chip/stm32_start.c",fullname="/home/tbennett/H5NuttxPort/nuttx/arch/arm/src/stm32h5/stm32_start.c",line="151",arch="armv8-m.main"},thread-id="1",stopped-threads="all"
+mi2.status = stopped
+-> =breakpoint-deleted,id="1"
+18-thread-list-ids
+-> 18^done,thread-ids={thread-id="1"},current-thread-id="1",number-of-threads="1"
+19-thread-info 1
+-> 19^done,threads=[{id="1",target-id="Remote target",frame={level="0",addr="0x08000250",func="__start",args=[],file="chip/stm32_start.c",fullname="/home/tbennett/H5NuttxPort/nuttx/arch/arm/src/stm32h5/stm32_start.c",line="151",arch="armv8-m.main"},state="stopped"}]
+20-stack-list-frames --thread 1 0 19
+-> 20^done,stack=[frame={level="0",addr="0x08000250",func="__start",file="chip/stm32_start.c",fullname="/home/tbennett/H5NuttxPort/nuttx/arch/arm/src/stm32h5/stm32_start.c",line="151",arch="armv8-m.main"}]
+21-stack-info-frame --thread 1 --frame 0
+-> 21^done,frame={level="0",addr="0x08000250",func="__start",file="chip/stm32_start.c",fullname="/home/tbennett/H5NuttxPort/nuttx/arch/arm/src/stm32h5/stm32_start.c",line="151",arch="armv8-m.main"}
+22-stack-list-variables --thread 1 --frame 0 --simple-values
+-> 22^done,variables=[{name="src",type="const uint32_t *",value="0x63"},{name="dest",type="uint32_t *",value="0x2e6f666e"}]
+23-var-create  global_var__vectors @ "_vectors"
+-> 23^done,name="global_var__vectors",numchild="147",value="[147]",type="const void * const[147]",has_more="0"
+24-stack-info-frame --thread 1 --frame 0
+-> 24^done,frame={level="0",addr="0x08000250",func="__start",file="chip/stm32_start.c",fullname="/home/tbennett/H5NuttxPort/nuttx/arch/arm/src/stm32h5/stm32_start.c",line="151",arch="armv8-m.main"}
+25-data-list-register-names
+-> 25^done,register-names=["r0","r1","r2","r3","r4","r5","r6","r7","r8","r9","r10","r11","r12","sp","lr","pc","","","","","","","","","","xPSR","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","d0","d1","d2","d3","d4","d5","d6","d7","d8","d9","d10","d11","d12","d13","d14","d15","","","","","","","","","","","","","","","","","fpscr","msp","psp","primask","basepri","faultmask","control","s0","s1","s2","s3","s4","s5","s6","s7","s8","s9","s10","s11","s12","s13","s14","s15","s16","s17","s18","s19","s20","s21","s22","s23","s24","s25","s26","s27","s28","s29","s30","s31"]
+26-var-create --thread 1 --frame 0 var_src_4096 @ "src"
+-> 26^done,name="var_src_4096",numchild="1",value="0x63",type="const uint32_t *",has_more="0"
+27-var-create  global_var_g_alloctimers @ "g_alloctimers"
+-> 27^done,name="global_var_g_alloctimers",numchild="2",value="{...}",type="volatile sq_queue_t",has_more="0"
+28-stack-select-frame --thread 1 0
+-> 28^done
+29-var-create --thread 1 --frame 0 var_dest_4096 @ "dest"
+-> 29^done,name="var_dest_4096",numchild="1",value="0x2e6f666e",type="uint32_t *",has_more="0"
+30-var-create  global_var_g_basetime @ "g_basetime"
+-> 30^done,name="global_var_g_basetime",numchild="2",value="{...}",type="struct timespec",has_more="0"
+31-data-list-register-values N
+-> 31^done,register-values=[{number="0",value="134227805"},{number="1",value="-1"},{number="2",value="0"},{number="3",value="45"},{number="4",value="-1"},{number="5",value="0"},{number="6",value="0"},{number="7",value="0"},{number="8",value="-1"},{number="9",value="-1"},{number="10",value="-1"},{number="11",value="-1"},{number="12",value="-1"},{number="13",value="0x20002ddc"},{number="14",value="0"},{number="15",value="0x8000250 <__start+4>"},{number="25",value="-1996488704"},{number="58",value="0"},{number="59",value="0"},{number="60",value="0"},{number="61",value="0"},{number="62",value="0"},{number="63",value="0"},{number="64",value="0"},{number="65",value="0"},{number="66",value="0"},{number="67",value="0"},{number="68",value="0"},{number="69",value="0"},{number="70",value="0"},{number="71",value="0"},{number="72",value="0"},{number="73",value="0"},{number="90",value="0"},{number="91",value="0x20002ddc"},{number="92",value="0x0"},{number="93",value="0"},{number="94",value="0"},{number="95",value="0"},{number="96",value="0"},{number="97",value="0"},{number="98",value="0"},{number="99",value="0"},{number="100",value="0"},{number="101",value="0"},{number="102",value="0"},{number="103",value="0"},{number="104",value="0"},{number="105",value="0"},{number="106",value="0"},{number="107",value="0"},{number="108",value="0"},{number="109",value="0"},{number="110",value="0"},{number="111",value="0"},{number="112",value="0"},{number="113",value="0"},{number="114",value="0"},{number="115",value="0"},{number="116",value="0"},{number="117",value="0"},{number="118",value="0"},{number="119",value="0"},{number="120",value="0"},{number="121",value="0"},{number="122",value="0"},{number="123",value="0"},{number="124",value="0"},{number="125",value="0"},{number="126",value="0"},{number="127",value="0"},{number="128",value="0"}]
+32-var-create  global_var_g_binfmts @ "g_binfmts"
+-> 32^done,name="global_var_g_binfmts",numchild="3",value="0x6e656874",type="struct binfmt_s *",has_more="0"
+33-var-create  global_var_g_builtin_count @ "g_builtin_count"
+-> 33^done,name="global_var_g_builtin_count",numchild="0",value="3",type="const int",has_more="0"
+34-var-create  global_var_g_builtins @ "g_builtins"
+-> 34^done,name="global_var_g_builtins",numchild="3",value="[3]",type="const struct builtin_s [3]",has_more="0"
+35-var-create  global_var_g_cpuinfo_operations @ "g_cpuinfo_operations"
+-> 35^done,name="global_var_g_cpuinfo_operations",numchild="11",value="{...}",type="const struct procfs_operations",has_more="0"
+36-var-create  global_var_g_current_regs @ "g_current_regs"
+-> 36^done,name="global_var_g_current_regs",numchild="1",value="[1]",type="volatile uint32_t *[1]",has_more="0"
+37-var-create  global_var_g_dtoa_round @ "g_dtoa_round"
+-> 37^done,name="global_var_g_dtoa_round",numchild="16",value="[16]",type="const double [16]",has_more="0"
+38-var-create  global_var_g_dtoa_scale_down @ "g_dtoa_scale_down"
+-> 38^done,name="global_var_g_dtoa_scale_down",numchild="9",value="[9]",type="const double [9]",has_more="0"
+39-var-create  global_var_g_dtoa_scale_up @ "g_dtoa_scale_up"
+-> 39^done,name="global_var_g_dtoa_scale_up",numchild="9",value="[9]",type="const double [9]",has_more="0"
+40-var-create  global_var_g_fmtarginvalid @ "g_fmtarginvalid"
+-> 40^done,name="global_var_g_fmtarginvalid",numchild="0",value="[0]",type="const char []",has_more="0"
+41-var-create  global_var_g_fmtargrange @ "g_fmtargrange"
+-> 41^done,name="global_var_g_fmtargrange",numchild="0",value="[0]",type="const char []",has_more="0"
+42-var-create  global_var_g_fmtargrequired @ "g_fmtargrequired"
+-> 42^done,name="global_var_g_fmtargrequired",numchild="0",value="[0]",type="const char []",has_more="0"
+43-var-create  global_var_g_fmtcmdfailed @ "g_fmtcmdfailed"
+-> 43^done,name="global_var_g_fmtcmdfailed",numchild="0",value="[0]",type="const char []",has_more="0"
+44-var-create  global_var_g_fmtcmdnotfound @ "g_fmtcmdnotfound"
+-> 44^done,name="global_var_g_fmtcmdnotfound",numchild="0",value="[0]",type="const char []",has_more="0"
+45-var-create  global_var_g_fmtcmdoutofmemory @ "g_fmtcmdoutofmemory"
+-> 45^done,name="global_var_g_fmtcmdoutofmemory",numchild="0",value="[0]",type="const char []",has_more="0"
+46-var-create  global_var_g_fmtcontext @ "g_fmtcontext"
+-> 46^done,name="global_var_g_fmtcontext",numchild="36",value="[36]",type="const char [36]",has_more="0"
+47-var-create  global_var_g_fmtdeepnesting @ "g_fmtdeepnesting"
+-> 47^done,name="global_var_g_fmtdeepnesting",numchild="27",value="[27]",type="const char [27]",has_more="0"
+48-var-create  global_var_g_fmtinternalerror @ "g_fmtinternalerror"
+-> 48^done,name="global_var_g_fmtinternalerror",numchild="25",value="[25]",type="const char [25]",has_more="0"
+49-var-create  global_var_g_fmtnomatching @ "g_fmtnomatching"
+-> 49^done,name="global_var_g_fmtnomatching",numchild="25",value="[25]",type="const char [25]",has_more="0"
+50-var-create  global_var_g_fmtnosuch @ "g_fmtnosuch"
+-> 50^done,name="global_var_g_fmtnosuch",numchild="25",value="[25]",type="const char [25]",has_more="0"
+51-var-create  global_var_g_fmtsignalrecvd @ "g_fmtsignalrecvd"
+-> 51^done,name="global_var_g_fmtsignalrecvd",numchild="32",value="[32]",type="const char [32]",has_more="0"
+52-var-create  global_var_g_fmtsyntax @ "g_fmtsyntax"
+-> 52^done,name="global_var_g_fmtsyntax",numchild="23",value="[23]",type="const char [23]",has_more="0"
+53-var-create  global_var_g_fmttoomanyargs @ "g_fmttoomanyargs"
+-> 53^done,name="global_var_g_fmttoomanyargs",numchild="29",value="[29]",type="const char [29]",has_more="0"
+54-var-create  global_var_g_freetimers @ "g_freetimers"
+-> 54^done,name="global_var_g_freetimers",numchild="2",value="{...}",type="volatile sq_queue_t",has_more="0"
+55-var-create  global_var_g_gpiobase @ "g_gpiobase"
+-> 55^done,name="global_var_g_gpiobase",numchild="8",value="[8]",type="const uint32_t [8]",has_more="0"
+56-var-create  global_var_g_hostname @ "g_hostname"
+-> 56^done,name="global_var_g_hostname",numchild="33",value="[33]",type="char [33]",has_more="0"
+57-var-create  global_var_g_idle_topstack @ "g_idle_topstack"
+-> 57^done,name="global_var_g_idle_topstack",numchild="0",value="536882676",type="const uintptr_t",has_more="0"
+58-var-create  global_var_g_inactivetasks @ "g_inactivetasks"
+-> 58^done,name="global_var_g_inactivetasks",numchild="2",value="{...}",type="dq_queue_t",has_more="0"
+59-var-create  global_var_g_irqvector @ "g_irqvector"
+-> 59^done,name="global_var_g_irqvector",numchild="147",value="[147]",type="struct irq_info_s [147]",has_more="0"
+60-var-create  global_var_g_lastpid @ "g_lastpid"
+-> 60^done,name="global_var_g_lastpid",numchild="0",value="1953653108",type="volatile pid_t",has_more="0"
+61-var-create  global_var_g_memdump_operations @ "g_memdump_operations"
+-> 61^done,name="global_var_g_memdump_operations",numchild="11",value="{...}",type="const struct procfs_operations",has_more="0"
+62-var-create  global_var_g_meminfo_operations @ "g_meminfo_operations"
+-> 62^done,name="global_var_g_meminfo_operations",numchild="11",value="{...}",type="const struct procfs_operations",has_more="0"
+63-var-create  global_var_g_mmheap @ "g_mmheap"
+-> 63^done,name="global_var_g_mmheap",numchild="9",value="0xa7325",type="struct mm_heap_s *",has_more="0"
+64-var-create  global_var_g_mount_operations @ "g_mount_operations"
+-> 64^done,name="global_var_g_mount_operations",numchild="11",value="{...}",type="const struct procfs_operations",has_more="0"
+65-var-create  global_var_g_msgfree @ "g_msgfree"
+-> 65^done,name="global_var_g_msgfree",numchild="2",value="{...}",type="struct list_node",has_more="0"
+66-var-create  global_var_g_msgfreeirq @ "g_msgfreeirq"
+-> 66^done,name="global_var_g_msgfreeirq",numchild="2",value="{...}",type="struct list_node",has_more="0"
+67-var-create  global_var_g_msgfreelist @ "g_msgfreelist"
+-> 67^done,name="global_var_g_msgfreelist",numchild="2",value="{...}",type="struct list_node",has_more="0"
+68-var-create  global_var_g_npidhash @ "g_npidhash"
+-> 68^done,name="global_var_g_npidhash",numchild="0",value="0",type="volatile int",has_more="0"
+69-var-create  global_var_g_nshgreeting @ "g_nshgreeting"
+-> 69^done,name="global_var_g_nshgreeting",numchild="31",value="[31]",type="const char [31]",has_more="0"
+70-var-create  global_var_g_nx_initstate @ "g_nx_initstate"
+-> 70^done,name="global_var_g_nx_initstate",numchild="0",value="0 '\\000'",type="volatile uint8_t",has_more="0"
+71-var-create  global_var_g_pendingtasks @ "g_pendingtasks"
+-> 71^done,name="global_var_g_pendingtasks",numchild="2",value="{...}",type="dq_queue_t",has_more="0"
+72-var-create  global_var_g_pidhash @ "g_pidhash"
+-> 72^done,name="global_var_g_pidhash",numchild="1",value="0x632e7075",type="struct tcb_s **",has_more="0"
+73-var-create  global_var_g_proc_operations @ "g_proc_operations"
+-> 73^done,name="global_var_g_proc_operations",numchild="11",value="{...}",type="const struct procfs_operations",has_more="0"
+74-var-create  global_var_g_procfs_operations @ "g_procfs_operations"
+-> 74^done,name="global_var_g_procfs_operations",numchild="29",value="{...}",type="const struct mountpt_operations",has_more="0"
+75-var-create  global_var_g_readytorun @ "g_readytorun"
+-> 75^done,name="global_var_g_readytorun",numchild="2",value="{...}",type="dq_queue_t",has_more="0"
+76-var-create  global_var_g_root_inode @ "g_root_inode"
+-> 76^done,name="global_var_g_root_inode",numchild="9",value="0x6565736c",type="struct inode *",has_more="0"
+77-var-create  global_var_g_running_tasks @ "g_running_tasks"
+-> 77^done,name="global_var_g_running_tasks",numchild="1",value="[1]",type="struct tcb_s *[1]",has_more="0"
+78-var-create  global_var_g_sigfreeaction @ "g_sigfreeaction"
+-> 78^done,name="global_var_g_sigfreeaction",numchild="2",value="{...}",type="sq_queue_t",has_more="0"
+79-var-create  global_var_g_sigpendingaction @ "g_sigpendingaction"
+-> 79^done,name="global_var_g_sigpendingaction",numchild="2",value="{...}",type="sq_queue_t",has_more="0"
+80-var-create  global_var_g_sigpendingirqaction @ "g_sigpendingirqaction"
+-> 80^done,name="global_var_g_sigpendingirqaction",numchild="2",value="{...}",type="sq_queue_t",has_more="0"
+81-var-create  global_var_g_sigpendingirqsignal @ "g_sigpendingirqsignal"
+-> 81^done,name="global_var_g_sigpendingirqsignal",numchild="2",value="{...}",type="sq_queue_t",has_more="0"
+82-var-create  global_var_g_sigpendingsignal @ "g_sigpendingsignal"
+-> 82^done,name="global_var_g_sigpendingsignal",numchild="2",value="{...}",type="sq_queue_t",has_more="0"
+83-var-create  global_var_g_syslog_channel @ "g_syslog_channel"
+-> 83^done,name="global_var_g_syslog_channel",numchild="1",value="[1]",type="syslog_channel_t * const[1]",has_more="0"
+84-var-create  global_var_g_syslog_mask @ "g_syslog_mask"
+-> 84^done,name="global_var_g_syslog_mask",numchild="0",value="255 '\\377'",type="uint8_t",has_more="0"
+85-var-create  global_var_g_system_ticks @ "g_system_ticks"
+-> 85^done,name="global_var_g_system_ticks",numchild="0",value="770",type="volatile clock_t",has_more="0"
+86-var-create  global_var_g_tasklisttable @ "g_tasklisttable"
+-> 86^done,name="global_var_g_tasklisttable",numchild="9",value="[9]",type="struct tasklist_s [9]",has_more="0"
+87-var-create  global_var_g_tcbinfo @ "g_tcbinfo"
+-> 87^done,name="global_var_g_tcbinfo",numchild="9",value="{...}",type="const struct tcbinfo_s",has_more="0"
+88-var-create  global_var_g_tcbinfo_operations @ "g_tcbinfo_operations"
+-> 88^done,name="global_var_g_tcbinfo_operations",numchild="11",value="{...}",type="const struct procfs_operations",has_more="0"
+89-var-create  global_var_g_uptime_operations @ "g_uptime_operations"
+-> 89^done,name="global_var_g_uptime_operations",numchild="11",value="{...}",type="const struct procfs_operations",has_more="0"
+90-var-create  global_var_g_version_operations @ "g_version_operations"
+-> 90^done,name="global_var_g_version_operations",numchild="11",value="{...}",type="const struct procfs_operations",has_more="0"
+91-var-create  global_var_g_waitingforsignal @ "g_waitingforsignal"
+-> 91^done,name="global_var_g_waitingforsignal",numchild="2",value="{...}",type="dq_queue_t",has_more="0"
+92-var-create  global_var_g_wdactivelist @ "g_wdactivelist"
+-> 92^done,name="global_var_g_wdactivelist",numchild="2",value="{...}",type="struct wdlist_node",has_more="0"
