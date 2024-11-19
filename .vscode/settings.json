@@ -5,12 +5,16 @@
     "editor.tabSize": 4,
     "editor.detectIndentation": true
   },
+  "[kconfig]": {
+    "editor.insertSpaces": false,
+  },
   "files.associations": {
     "Makefile": "makefile",
     "nucleo-h563zi.h": "c",
     "stm32_gpio.h": "c",
     "stm32_flash.h": "c",
-    "barriers.h": "c"
+    "barriers.h": "c",
+    "Kconfig" : "kconfig"
   },
   "search.useIgnoreFiles": true,
   "editor.tabSize": 2,
